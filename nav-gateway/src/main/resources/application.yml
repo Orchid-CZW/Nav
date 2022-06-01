@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: nav-gateway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+    gateway:
+      routes:
+        - id: navigation_route
+          uri: lb://nav-navigation
+          predicates:
+            - Path=/api/navigation/**
+          filters:
+            - RewritePath=/api/(?<segment>.*),/$\{segment}
+
+        - id: admin_route
+          uri: lb://renren-fast
+          predicates:
+            - Path=/api/**
+          filters:
+            - RewritePath=/api/(?<segment>.*),/renren-fast/$\{segment}
+server:
+  port: 88

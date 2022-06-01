@@ -1,0 +1,66 @@
+server:
+  port: 11000
+spring:
+  banner:
+    charset: UTF-8
+    location: classpath:banner.txt
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/nav?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: 123456
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+  application:
+    name: nav-navigation
+  redis:
+    host: 121.41.50.216
+    port: 6379
+
+mybatis-plus:
+  # 使⽤@mapper后，不需要在spring配置中设置扫描地址，通过mapper.xml⾥⾯的namespace属性对应相关的mapper类
+  # mapper-locations: classpath:/mapper/**/*.xml
+  global-config:
+    db-config:
+      id-type: auto
+      logic-delete-field: delFlag  #全局逻辑删除字段值 3.3.0开始支持，详情看下面。
+      logic-delete-value: 1 # 逻辑已删除值(默认为 1)
+      logic-not-delete-value: 0 # 逻辑未删除值(默认为 0)
+
+# 目前使用Java生成接口文档的最佳实现: SwaggerV3(OpenAPI）+ Knife4J
+knife4j:
+  # 是否开启Knife4j增强模式，默认false
+  enable: true
+  # 自定义文档集合，该属性是数组
+  documents:
+    # 所属分组
+    - group: Test Group
+      # 类似于接口中的tag,对于自定义文档的分组
+      name: My Documents
+      # markdown文件路径,可以是一个文件夹(classpath:markdowns/*)，也可以是单个文件(classpath:md/sign.md)
+      locations: classpath:wiki/*
+  # 前端Ui的个性化配置属性
+  setting:
+    # Ui默认显示语言,目前主要有两种:中文(zh-CN)、英文(en-US)，默认zh-CN
+    language: en-US
+    # 是否显示Footer，默认true
+    enableFooter: false
+    # 是否开启自定义Footer
+    enableFooterCustom: true
+    # 自定义Footer内容
+    footerCustomContent: Orchid:Nav | [knife4j文档](https://doc.xiaominfo.com/knife4j/)
+    # 是否开启自定义主页内容，默认false
+    enableHomeCustom: true
+    # 主页内容Markdown文件路径
+    homeCustomLocation: classpath:wiki/README.md
+    # 是否显示界面中SwaggerModel功能，默认true
+    enableSwaggerModels: true
+    # 重命名SwaggerModel名称,默认Swagger Models
+    swaggerModelName: My Models
+
+# 设置日志级别，使用日志文件logback-spring.xml，则无需配置
+#logging:
+#  level:
+#    root: ERROR
