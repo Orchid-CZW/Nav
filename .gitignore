@@ -3,7 +3,9 @@
 # 过滤.gradle文件
 .gradle
 # 过滤整个文件夹build
-/build/
+# /build/
+# 添加 renren-fast-vue文件夹 下的 build文件夹
+!renren-fast-vue/build
 # 添加 gradle/wrapper/文件夹 下的 gradle-wrapper.jar
 !gradle/wrapper/gradle-wrapper.jar
 ### STS ###
@@ -31,7 +33,7 @@ rebel.xml
 /dist/
 /nbdist/
 /.nb-gradle/
-build/
+# build/
 ### maven ###
 target/
 *.war
