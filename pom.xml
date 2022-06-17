@@ -37,6 +37,7 @@
     <!--  子模块继承父模块之后，提供作用：锁定版本 + 子模块不用再写 version  -->
     <dependencyManagement>
         <dependencies>
+            <!-- Spring Boot 依赖版本管理 -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
@@ -44,6 +45,7 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <!-- Spring Cloud 依赖版本管理 -->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
@@ -51,6 +53,7 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <!-- Spring Cloud Alibaba 依赖版本管理 -->
             <dependency>
                 <groupId>com.alibaba.cloud</groupId>
                 <artifactId>spring-cloud-alibaba-dependencies</artifactId>
@@ -58,67 +61,67 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-
+            <!-- Spring Boot 启动器：Mybatis-Plus -->
             <dependency>
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-boot-starter</artifactId>
                 <version>${mybatis-plus.version}</version>
             </dependency>
-
+	        <!-- MySQL提供的JDBC驱动 -->
             <dependency>
                 <groupId>mysql</groupId>
                 <artifactId>mysql-connector-java</artifactId>
                 <version>${mysql.version}</version>
             </dependency>
-
-            <!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpcore -->
+            <!-- Apache提供的一组实现HTTP协议最基础的组件 -->
             <dependency>
                 <groupId>org.apache.httpcomponents</groupId>
                 <artifactId>httpcore</artifactId>
                 <version>${http.components.version}</version>
             </dependency>
+	        <!-- Apache Commons-lang包提供了标准Java库函数里没有提供的Java核心类的操作方法,尤其是在String操作方法 -->
             <dependency>
                 <groupId>commons-lang</groupId>
                 <artifactId>commons-lang</artifactId>
                 <version>${commons.lang.version}</version>
             </dependency>
-
+            <!-- Lombok被用来消除Java类中的大量样板代码 -->
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
                 <version>${lombok.version}</version>
             </dependency>
-
-            <!-- 重写覆盖 spring-boot-dependencies 中的依赖版本  -->
-            <dependency>
-                <groupId>org.elasticsearch.client</groupId>
-                <artifactId>elasticsearch-rest-high-level-client</artifactId>
-                <version>${elasticsearch.version}</version>
-            </dependency>
+            <!-- 重写覆盖 spring-boot-dependencies 中的依赖版本，Elasticsearch 服务端依赖 -->
             <dependency>
                 <groupId>org.elasticsearch</groupId>
                 <artifactId>elasticsearch</artifactId>
                 <version>${elasticsearch.version}</version>
             </dependency>
+            <!-- 重写覆盖 spring-boot-dependencies 中的依赖版本，Elasticsearch 客户端依赖 -->
             <dependency>
                 <groupId>org.elasticsearch.client</groupId>
                 <artifactId>elasticsearch-rest-client</artifactId>
                 <version>${elasticsearch.version}</version>
             </dependency>
-
+            <!-- 重写覆盖 spring-boot-dependencies 中的依赖版本，Elasticsearch 高级客户端依赖 -->
+            <dependency>
+                <groupId>org.elasticsearch.client</groupId>
+                <artifactId>elasticsearch-rest-high-level-client</artifactId>
+                <version>${elasticsearch.version}</version>
+            </dependency>
             <!-- 目前使用Java生成接口文档的最佳实现: SwaggerV3(OpenAPI）+ Knife4J  -->
             <dependency>
                 <groupId>com.github.xiaoymin</groupId>
                 <artifactId>knife4j-spring-boot-starter</artifactId>
                 <version>${knife4j.version}</version>
             </dependency>
-
+            <!-- Apache提供的权限管理框架 -->
             <dependency>
                 <groupId>org.apache.shiro</groupId>
                 <artifactId>shiro-core</artifactId>
                 <version>${shiro.version}</version>
             </dependency>
-
+            <!-- 子模块版本管理 -->
             <dependency>
                 <groupId>com.orchid</groupId>
                 <artifactId>nav-common</artifactId>

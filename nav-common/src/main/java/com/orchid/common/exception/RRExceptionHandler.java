@@ -13,13 +13,18 @@ import org.springframework.web.servlet.NoHandlerFoundException;
  * 异常处理器
  *
  * @author Mark sunlightcs@gmail.com
+ * 使用了@RestControllerAdvice的类可以使用@ExceptionHandler、@InitBinder、@ModelAttribute注解到方法上
+ * @ExceptionHandler 全局异常处理，应用到所有@RequestMapping注解的方法
+ * @InitBinder 全局数据预处理，应用到所有@RequestMapping注解的方法
+ * @ModelAttribute 全局数据绑定，应用到所有@RequestMapping注解的方法
  */
 @RestControllerAdvice
 public class RRExceptionHandler {
 	private Logger logger = LoggerFactory.getLogger(getClass());
 
 	/**
-	 * 处理自定义异常
+	 * 处理全局自定义异常
+	 * @ExceptionHandler(RRException.class) 在其抛出RRException异常时执行
 	 */
 	@ExceptionHandler(RRException.class)
 	public R handleRRException(RRException e){
@@ -30,6 +35,10 @@ public class RRExceptionHandler {
 		return r;
 	}
 
+	/**
+	 * 处理全局异常
+	 * @ExceptionHandler(NoHandlerFoundException.class) 在其抛出NoHandlerFoundException异常时执行
+	 */
 	@ExceptionHandler(NoHandlerFoundException.class)
 	public R handlerNoFoundException(Exception e) {
 		logger.error(e.getMessage(), e);

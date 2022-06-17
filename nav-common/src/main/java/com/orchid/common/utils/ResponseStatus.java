@@ -8,6 +8,8 @@ import java.util.Collections;
 import java.util.List;
 
 /**
+ * swagger config for open api responseStatus
+ *
  * @author Orchid
  */
 @Getter
