@@ -27,6 +27,8 @@ import ${mainPath}.common.utils.R;
  *      组合@Controller和@ResponseBody，当你开发一个和页面交互数据的控制时，比如bbs-web的api接口需要此注解
  * @ResponseBody
  *      支持将返回值放在response体内，而不是返回一个页面。比如Ajax接口，可以用此注解返回数据而不是页面。此注解可以放置在返回值前或方法前
+ * @Slf4j
+ *      如果不想每次都写private final Logger logger = LoggerFactory.getLogger(当前类名.class); 可以用注解@Slf4j
  * @Api
  *      作用在类上，表明是swagger资源，拥有两个属性：value、tags，value不能有多个值，生成的api文档会根据value或tags分类
  *      即这个controller中的所有接口生成的接口文档都会在tags这个list下；tags如果有多个值，会生成多个list,每个list都显示所有接口
@@ -35,8 +37,9 @@ import ${mainPath}.common.utils.R;
  *      produces属性: 定制返回的response的媒体类型和字符集，或需返回值是json对象
  *      @RequestMapping(value="/api",produces="application/json;charset=UTF-8",method=RequestMethod.POST)
  */
-@Api(value = "${className} Interfaces", tags = "${className} Interfaces")
 @RestController
+@Slf4j
+@Api(value = "${className} Interfaces", tags = "${className} Interfaces")
 @RequestMapping("${moduleName}/${pathName}")
 public class ${className}Controller {
     /**
